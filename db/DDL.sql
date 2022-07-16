@@ -56,17 +56,27 @@ CREATE TABLE `stocked_products` (
 	PRIMARY KEY (`stocked_product_id`)
 );
 
-ALTER TABLE `vendors` ADD CONSTRAINT `vendors_fk0` FOREIGN KEY (`person_id`) REFERENCES `people`(`person_id`);
+ALTER TABLE `vendors` ADD CONSTRAINT `vendors_fk0` FOREIGN KEY (`person_id`) 
+REFERENCES `people`(`person_id`);
 
-ALTER TABLE `vendors_at_events` ADD CONSTRAINT `vendors_at_events_fk0` FOREIGN KEY (`vendor_id`) REFERENCES `vendors`(`vendor_id`);
+ALTER TABLE `vendors_at_events` ADD CONSTRAINT `vendors_at_events_fk0`
+FOREIGN KEY (`vendor_id`) REFERENCES `vendors`(`vendor_id`) 
+ON DELETE CASCADE;
 
-ALTER TABLE `vendors_at_events` ADD CONSTRAINT `vendors_at_events_fk1` FOREIGN KEY (`event_id`) REFERENCES `events`(`event_id`);
+ALTER TABLE `vendors_at_events` ADD CONSTRAINT `vendors_at_events_fk1` 
+FOREIGN KEY (`event_id`) REFERENCES `events`(`event_id`) 
+ON DELETE CASCADE;
 
-ALTER TABLE `events` ADD CONSTRAINT `events_fk0` FOREIGN KEY (`location_id`) REFERENCES `locations`(`location_id`);
+ALTER TABLE `events` ADD CONSTRAINT `events_fk0` FOREIGN KEY (`location_id`)
+REFERENCES `locations`(`location_id`);
 
-ALTER TABLE `stocked_products` ADD CONSTRAINT `stocked_products_fk0` FOREIGN KEY (`vendor_id`) REFERENCES `vendors`(`vendor_id`);
+ALTER TABLE `stocked_products` ADD CONSTRAINT `stocked_products_fk0` 
+FOREIGN KEY (`vendor_id`) REFERENCES `vendors`(`vendor_id`) 
+ON DELETE CASCADE;
 
-ALTER TABLE `stocked_products` ADD CONSTRAINT `stocked_products_fk1` FOREIGN KEY (`product_id`) REFERENCES `products`(`product_id`);
+ALTER TABLE `stocked_products` ADD CONSTRAINT `stocked_products_fk1`
+FOREIGN KEY (`product_id`) REFERENCES `products`(`product_id`) 
+ON DELETE CASCADE;
 
 
 -- Example Data 
