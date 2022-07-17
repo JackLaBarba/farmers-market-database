@@ -106,7 +106,12 @@ INSERT INTO vendors (business_name, website_url, person_id) VALUES
 (:business_name, :website_url, :person_id);
 
 -- Updates for 1 table
--- TODO
+UPDATE people SET
+  full_name = :full_name,
+  email = :email
+  phone_number = :phone_number
+  is_admin = :is_admin
+WHERE people.person_id = :person_id
 
 -- Deletes for 2 tables
 -- TODO
