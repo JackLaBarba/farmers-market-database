@@ -16,12 +16,14 @@ FROM events
 ORDER BY events.event_id ASC;
 
 -- READ on products.html
+-- Allows the user to search for a product name
 SELECT
   products.product_id
   products.name,
   products.description,
   products.unit
 FROM products
+WHERE products.name LIKE '%:user_query%'
 ORDER BY products.product_id ASC;
 
 -- READ on locations.html
