@@ -1,7 +1,11 @@
 -- tokens starting with : indicate a value supplied by the backend programming
 -- language.
 
--- Selects for all 7 tables
+--
+-- SELECTS for all 7 tables
+--
+
+-- READ on events.html
 SELECT 
   events.event_id
   events.name, 
@@ -11,6 +15,7 @@ SELECT
 FROM events
 ORDER BY events.event_id ASC;
 
+-- READ on products.html
 SELECT
   products.product_id
   products.name,
@@ -19,6 +24,7 @@ SELECT
 FROM products
 ORDER BY products.product_id ASC;
 
+-- READ on locations.html
 SELECT
   locations.location_id
   locations.name,
@@ -28,6 +34,7 @@ SELECT
 FROM locations
 ORDER BY locations.location_id ASC;
 
+-- READ on people.html
 SELECT
   people.people_id
   people.full_name,
@@ -37,6 +44,7 @@ SELECT
 FROM people
 ORDER BY people.people_id ASC;
 
+-- READ on products.html
 SELECT
   products.product_id,
   products.product_name,
@@ -45,6 +53,7 @@ SELECT
 FROM products
 ORDER BY products.product_id ASC;
 
+-- READ on stocked_products.html
 SELECT
   stocked_products.stocked_product_id,
   vendors.name,
@@ -57,6 +66,7 @@ LEFT JOIN products
   ON stocked_products.product_id = products.product_id
 ORDER BY stocked_prodcts.stocked_product_id ASC;
 
+-- READ on vendors_at_events.html
 SELECT
   vendors_at_events.vendor_at_event_id,
   vendors.name,
@@ -68,6 +78,7 @@ LEFT JOIN events
   ON vendors_at_events.event_id = events.event_id
 ORDER BY vendors_at_events.vendor_at_event_id ASC;
 
+-- READ on vendors.html
 SELECT
   vendors.vendor_id,
   vendors.business_name,
@@ -78,40 +89,63 @@ LEFT JOIN people
   ON vendors.people_id = people.person_id
 ORDER BY vendors.vendor_id ASC;
 
-
+--
 -- Inserts for all 7 tables
-INSERT INTO events (name, starts_at, ends_at, location_id) VALUES
-(:name, :starts_at, :ends_at, :location_id),
+--
 
+-- CREATE on events.html
+INSERT INTO events (name, starts_at, ends_at, location_id) VALUES
+(:name, :starts_at, :ends_at, :location_id);
+
+-- CREATE on products.html
 INSERT INTO products (name, description, unit) VALUES 
 (:name, :description, :unit);
 
+-- CREATE on locations.html
 INSERT INTO locations (name, street_address, has_parking, contact_information) 
 VALUES
 (:name, :street_address, :has_parking, :contact_information);
 
+-- CREATE on people.html
 INSERT INTO people (full_name, email, phone_number, is_admin) VALUES
 (:full_name, :email, :phone_number, :is_admin);
 
+-- CREATE on products.html
 INSERT INTO products (name, description, unit) VALUES 
 (:name, :description, :unit);
 
+-- CREATE on stocked_products.html
 INSERT INTO stocked_products (vendor_id, product_id, unit_price_cent) VALUES
 (:vendor_id, :product_id, :unit_price_cent);
 
+-- CREATE on vendors_at_events.html
 INSERT INTO vendors_at_events (vendor_id, event_id) VALUES
 (:vendor_id, :event_id);
 
+-- CREATE on vendors.html
 INSERT INTO vendors (business_name, website_url, person_id) VALUES
 (:business_name, :website_url, :person_id);
 
--- Updates for 1 table
+--
+-- UPDATES for 1 table
+--
+
+-- UPDATE on people.html
 UPDATE people SET
   full_name = :full_name,
   email = :email
   phone_number = :phone_number
   is_admin = :is_admin
-WHERE people.person_id = :person_id
+WHERE people.person_id = :person_id;
 
--- Deletes for 2 tables
--- TODO
+--
+-- DELETES for 2 tables
+-- 
+
+-- DELETE on people.html
+DELETE FROM people
+WHERE person_id = :person_id;
+
+-- DELETE on stocked_products.html
+DELETE FROM stocked_products
+WHERE stocked_product_id = :stocked_product_id;
