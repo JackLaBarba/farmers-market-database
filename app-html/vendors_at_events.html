@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Farmers Market DB - Products</title>
+    <title>Farmers Market DB - Vendors at Events</title>
 </head>
 
 <body>
@@ -14,46 +14,58 @@
         [ <a href="vendors_at_events.html">Vendors at Events</a> | <a href="locations.html">Locations</a> ]
     </nav>
 
-    <h2>Products</h2>
+    <h2>Vendors At Events</h2>
     <table border="1" cellpadding="5">
         <tr>
+            <th></th>
             <th>ID</th>
-            <th>name</th>
-            <th>description</th>
-            <th>unit</th>
+            <th>full_name</th>
+            <th>email</th>
+            <th>phone_number</th>
+            <th>is_admin</th>
         </tr>
         <tr>
+            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
             <td>1</td>
-            <td>Coffee</td>
-            <td>Strong, smoky aroma with notes of tarry and pipe tobacco</td>
-            <td>pound</td>
+            <td>Carl Bun</td>
+            <td>carlb@yahoo.com</td>
+            <td>(541)879-8276</td>
+            <td>Yes</td>
         </tr>
         <tr>
+            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
             <td>2</td>
-            <td>Oranges</td>
-            <td>Navel oranges, winter orange with thick, bright orange skin and sweet, juicy fruit.</td>
-            <td>pound</td>
+            <td>Donna Martinez</td>
+            <td>donnam@gmail.com</td>
+            <td>(541)879-8276</td>
+            <td>No</td>
         </tr>
     </table>
     <p>&nbsp;</p>
     <div id="insert" style="display: block">
-        <form id="addProduct">
-            <legend><strong>Add Product</strong></legend>
+        <form id="addPerson">
+            <legend><strong>Add Person</strong></legend>
             <fieldset class="fields">
                 <div>
-                    <label> Name </label> <input type="text" name="name">
+                    <label> Full Name </label> <input type="text" name="full_name">
                 </div>
                 <div>
-                    <label> Description </label> <textarea name="description"></textarea>
+                    <label> Email </label> <input type="text" name="email">
                 </div>
                 <div>
-                    <label> Unit </label> <input type="text" name="unit">
+                    <label> Phone number </label> <input type="text" name="phone_number">
+                </div>
+                <div>
+                    <label> Admin? </label> <input type="checkbox" name="is_admin">
                 </div>
             </fieldset>
-            <input class="btn" type="submit" id="addProduct" value="Add a Product">
+            <input class="btn" type="submit" id="addPlanet" value="Add a Person">
             <input class="btn" type="button" value="cancel">
         </form>
+        <!--add new planet-->
     </div><!-- insert -->
+
+    <p>&nbsp;</p>
     <div id="update" style="display: block">
         <form id="updatePerson">
             <legend><strong>Update Person</strong></legend>
@@ -91,6 +103,7 @@
             <input class="btn" type="button" value="cancel">
         </form>
     </div><!-- delete -->
+    
 </body>
 
 </html>

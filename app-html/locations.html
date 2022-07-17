@@ -1,20 +1,18 @@
 <html>
 
 <head>
-    <title>Farmers Market DB - Products</title>
+    <title>Farmers Market DB - Locations</title>
 </head>
 
 <body>
     <h1>Farmers Market DB</h1>
-
     <nav>
         [ <a href="index.html">Home</a> | <a href="people.html">People</a> ]
         [ <a href="vendors.html">Vendors</a> | <a href="products.html">Products</a> ]
         [ <a href="stocked_products.html">Stocked Products</a> | <a href="events.html">Events</a> ]
         [ <a href="vendors_at_events.html">Vendors at Events</a> | <a href="locations.html">Locations</a> ]
     </nav>
-
-    <h2>Products</h2>
+    <h3>Locations</h3>
     <table border="1" cellpadding="5">
         <tr>
             <th>ID</th>
@@ -38,7 +36,7 @@
     <p>&nbsp;</p>
     <div id="insert" style="display: block">
         <form id="addProduct">
-            <legend><strong>Add Product</strong></legend>
+            <legend><strong>Add Location</strong></legend>
             <fieldset class="fields">
                 <div>
                     <label> Name </label> <input type="text" name="name">
@@ -53,7 +51,7 @@
             <input class="btn" type="submit" id="addProduct" value="Add a Product">
             <input class="btn" type="button" value="cancel">
         </form>
-    </div><!-- insert -->
+    </div>
     <div id="update" style="display: block">
         <form id="updatePerson">
             <legend><strong>Update Person</strong></legend>
