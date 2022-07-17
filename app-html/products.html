@@ -14,93 +14,44 @@
     <h2>Products</h2>
     <table border="1" cellpadding="5">
         <tr>
-            <th></th>
             <th>ID</th>
-            <th>full_name</th>
-            <th>email</th>
-            <th>phone_number</th>
-            <th>is_admin</th>
+            <th>name</th>
+            <th>description</th>
+            <th>unit</th>
         </tr>
         <tr>
-            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
             <td>1</td>
-            <td>Carl Bun</td>
-            <td>carlb@yahoo.com</td>
-            <td>(541)879-8276</td>
-            <td>Yes</td>
+            <td>Coffee</td>
+            <td>Strong, smoky aroma with notes of tarry and pipe tobacco</td>
+            <td>pound</td>
         </tr>
         <tr>
-            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
             <td>2</td>
-            <td>Donna Martinez</td>
-            <td>donnam@gmail.com</td>
-            <td>(541)879-8276</td>
-            <td>No</td>
+            <td>Oranges</td>
+            <td>Navel oranges, winter orange with thick, bright orange skin and sweet, juicy fruit.</td>
+            <td>pound</td>
         </tr>
     </table>
     <p>&nbsp;</p>
     </div> <!-- browse -->
     <div id="insert" style="display: block">
-        <form id="addPerson">
-            <legend><strong>Add Person</strong></legend>
+        <form id="addProduct">
+            <legend><strong>Add Product</strong></legend>
             <fieldset class="fields">
                 <div>
-                    <label> Full Name </label> <input type="text" name="full_name">
+                    <label> Name </label> <input type="text" name="name">
                 </div>
                 <div>
-                    <label> Email </label> <input type="text" name="email">
+                    <label> Description </label> <textarea name="description"></textarea>
                 </div>
                 <div>
-                    <label> Phone number </label> <input type="text" name="phone_number">
-                </div>
-                <div>
-                    <label> Admin? </label> <input type="checkbox" name="is_admin">
+                    <label> Unit </label> <input type="text" name="unit">
                 </div>
             </fieldset>
-            <input class="btn" type="submit" id="addPlanet" value="Add a Person">
+            <input class="btn" type="submit" id="addProduct" value="Add a Product">
             <input class="btn" type="button" value="cancel">
         </form>
-        <!--add new planet-->
     </div><!-- insert -->
-
-    <p>&nbsp;</p>
-    <div id="update" style="display: block">
-        <form id="updatePerson">
-            <legend><strong>Update Person</strong></legend>
-            <fieldset class="fields">
-                <label>ID:</label> 1
-                <div>
-                    <label> Full Name </label> <input type="text" name="full_name" value="Carl Bun">
-                </div>
-                <div>
-                    <label> Email </label> <input type="text" name="email" value="carlb@yahoo.com">
-                </div>
-                <div>
-                    <label> Phone number </label> <input type="text" name="phone_number" value="(541)879-8276">
-                </div>
-                <div>
-                    <label> Admin? </label> <input type="checkbox" name="is_admin" checked=true>
-                </div>
-
-            </fieldset>
-            <input class="btn" type="submit" id="UpdateSavePerson" value="Save Update Person">
-            <input class="btn" type="button" value="cancel">
-        </form>
-    </div><!-- update -->
-    <p>&nbsp;</p>
-    <div id="delete" style="display: block">
-        <form id="deletePerson">
-            <legend><strong>Delete Person</strong></legend>
-            <fieldset class="fields">
-                <p>Are you sure you wish to delete the following?</p>
-                <label>ID:</label> 1
-                <label> Full name </label> Carl Bun
-
-            </fieldset>
-            <input class="btn" type="submit" id="DeletePerson" value="Delete Person">
-            <input class="btn" type="button" value="cancel">
-        </form>
-    </div><!-- delete -->
 </body>
 
 </html>
