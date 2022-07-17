@@ -17,80 +17,59 @@
     <h2>Events</h2>
     <table border="1" cellpadding="5">
         <tr>
-            <th>ID</th>
+            <th>event ID</th>
             <th>name</th>
-            <th>description</th>
-            <th>unit</th>
+            <th>starts at</th>
+            <th>ends at</th>
+            <th>location name</th>
         </tr>
         <tr>
             <td>1</td>
-            <td>Coffee</td>
-            <td>Strong, smoky aroma with notes of tarry and pipe tobacco</td>
-            <td>pound</td>
+            <td>Summer Extravaganza</td>
+            <td>2022-07-04 10:00:00</td>
+            <td>2022-07-04 16:00:00</td>
+            <td>County Fairgrounds</td>
         </tr>
         <tr>
             <td>2</td>
-            <td>Oranges</td>
-            <td>Navel oranges, winter orange with thick, bright orange skin and sweet, juicy fruit.</td>
-            <td>pound</td>
+            <td>Spring fling</td>
+            <td>2022-04-04 10:00:00</td>
+            <td>2022-04-04 16:00:00</td>
+            <td>City Park</td>
         </tr>
     </table>
     <p>&nbsp;</p>
     <div id="insert" style="display: block">
-        <form id="addProduct">
+        <form id="addEvent">
             <legend><strong>Add Event</strong></legend>
             <fieldset class="fields">
                 <div>
                     <label> Name </label> <input type="text" name="name">
                 </div>
                 <div>
-                    <label> Description </label> <textarea name="description"></textarea>
+                    <label> Starting Date</label> <input type="date" name="starts_at_date">
                 </div>
                 <div>
-                    <label> Unit </label> <input type="text" name="unit">
+                    <label> Starting Time</label> <input type="time" name="starts_at_time">
+                </div>
+                <div>
+                    <label> Ending Date</label> <input type="date" name="ends_at_date">
+                </div>
+                <div>
+                    <label> Ending Time</label> <input type="time" name="ends_at_time">
+                </div>
+                <div>
+                    <label> Location </label>
+                    <select type="time" name="ends_at_time">
+                        <option>County Fairgrounds</option>
+                        <option>City Park</option>
+                    </select>
                 </div>
             </fieldset>
-            <input class="btn" type="submit" id="addProduct" value="Add a Product">
+            <input class="btn" type="submit" id="addEvent" value="Add Event">
             <input class="btn" type="button" value="cancel">
         </form>
     </div>
-    <div id="update" style="display: block">
-        <form id="updatePerson">
-            <legend><strong>Update Person</strong></legend>
-            <fieldset class="fields">
-                <label>ID:</label> 1
-                <div>
-                    <label> Full Name </label> <input type="text" name="full_name" value="Carl Bun">
-                </div>
-                <div>
-                    <label> Email </label> <input type="text" name="email" value="carlb@yahoo.com">
-                </div>
-                <div>
-                    <label> Phone number </label> <input type="text" name="phone_number" value="(541)879-8276">
-                </div>
-                <div>
-                    <label> Admin? </label> <input type="checkbox" name="is_admin" checked=true>
-                </div>
-
-            </fieldset>
-            <input class="btn" type="submit" id="UpdateSavePerson" value="Save Update Person">
-            <input class="btn" type="button" value="cancel">
-        </form>
-    </div><!-- update -->
-    <p>&nbsp;</p>
-    <div id="delete" style="display: block">
-        <form id="deletePerson">
-            <legend><strong>Delete Person</strong></legend>
-            <fieldset class="fields">
-                <p>Are you sure you wish to delete the following?</p>
-                <label>ID:</label> 1
-                <label> Full name </label> Carl Bun
-
-            </fieldset>
-            <input class="btn" type="submit" id="DeletePerson" value="Delete Person">
-            <input class="btn" type="button" value="cancel">
-        </form>
-    </div><!-- delete -->
 </body>
 
 </html>
