@@ -17,78 +17,47 @@
         <tr>
             <th>ID</th>
             <th>name</th>
-            <th>description</th>
-            <th>unit</th>
+            <th>street address</th>
+            <th>has parking?</th>
+            <th>contact info</th>
         </tr>
         <tr>
             <td>1</td>
-            <td>Coffee</td>
-            <td>Strong, smoky aroma with notes of tarry and pipe tobacco</td>
-            <td>pound</td>
+            <td>County Fairgrounds</td>
+            <td>1234 fair st.</td>
+            <td>Yes</td>
+            <td>Bob at (555)555-0123</td>
         </tr>
         <tr>
             <td>2</td>
-            <td>Oranges</td>
-            <td>Navel oranges, winter orange with thick, bright orange skin and sweet, juicy fruit.</td>
-            <td>pound</td>
+            <td>City Park</td>
+            <td>5678 park st.</td>
+            <td>Yes</td>
+            <td>Jane at (555)555-0456</td>
         </tr>
     </table>
     <p>&nbsp;</p>
     <div id="insert" style="display: block">
-        <form id="addProduct">
+        <form id="addLocation">
             <legend><strong>Add Location</strong></legend>
             <fieldset class="fields">
                 <div>
                     <label> Name </label> <input type="text" name="name">
                 </div>
                 <div>
-                    <label> Description </label> <textarea name="description"></textarea>
+                    <label> Street Address </label> <textarea name="street_address"></textarea>
                 </div>
                 <div>
-                    <label> Unit </label> <input type="text" name="unit">
+                    <label> Has Parking? </label> <input type="checkbox" name="has_parking">
+                </div>
+                <div>
+                    <label> Contact Info </label> <input type="text" name="contact_info">
                 </div>
             </fieldset>
-            <input class="btn" type="submit" id="addProduct" value="Add a Product">
+            <input class="btn" type="submit" id="addlocation" value="Add location">
             <input class="btn" type="button" value="cancel">
         </form>
     </div>
-    <div id="update" style="display: block">
-        <form id="updatePerson">
-            <legend><strong>Update Person</strong></legend>
-            <fieldset class="fields">
-                <label>ID:</label> 1
-                <div>
-                    <label> Full Name </label> <input type="text" name="full_name" value="Carl Bun">
-                </div>
-                <div>
-                    <label> Email </label> <input type="text" name="email" value="carlb@yahoo.com">
-                </div>
-                <div>
-                    <label> Phone number </label> <input type="text" name="phone_number" value="(541)879-8276">
-                </div>
-                <div>
-                    <label> Admin? </label> <input type="checkbox" name="is_admin" checked=true>
-                </div>
-
-            </fieldset>
-            <input class="btn" type="submit" id="UpdateSavePerson" value="Save Update Person">
-            <input class="btn" type="button" value="cancel">
-        </form>
-    </div><!-- update -->
-    <p>&nbsp;</p>
-    <div id="delete" style="display: block">
-        <form id="deletePerson">
-            <legend><strong>Delete Person</strong></legend>
-            <fieldset class="fields">
-                <p>Are you sure you wish to delete the following?</p>
-                <label>ID:</label> 1
-                <label> Full name </label> Carl Bun
-
-            </fieldset>
-            <input class="btn" type="submit" id="DeletePerson" value="Delete Person">
-            <input class="btn" type="button" value="cancel">
-        </form>
-    </div><!-- delete -->
 </body>
 
 </html>
