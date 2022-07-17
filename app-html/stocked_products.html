@@ -19,91 +19,79 @@
         <tr>
             <th></th>
             <th>ID</th>
-            <th>full_name</th>
-            <th>email</th>
-            <th>phone_number</th>
-            <th>is_admin</th>
+            <th>Vendor name</th>
+            <th>Product name</th>
+            <th>Unit price</th>
+            <th>Unit</th>
         </tr>
         <tr>
-            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+            <td><a href="#">Delete</a></td>
             <td>1</td>
-            <td>Carl Bun</td>
-            <td>carlb@yahoo.com</td>
-            <td>(541)879-8276</td>
-            <td>Yes</td>
+            <td>Sun Farm</td>
+            <td>Carrot</td>
+            <td>$0.50</td>
+            <td>pound</td>
         </tr>
         <tr>
-            <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+            <td><a href="#">Delete</a></td>
             <td>2</td>
-            <td>Donna Martinez</td>
-            <td>donnam@gmail.com</td>
-            <td>(541)879-8276</td>
-            <td>No</td>
+            <td>Moon Farm</td>
+            <td>Cheese</td>
+            <td>$0.90</td>
+            <td>ounce</td>
         </tr>
     </table>
     <p>&nbsp;</p>
     <div id="insert" style="display: block">
-        <form id="addPerson">
-            <legend><strong>Add Person</strong></legend>
+        <form id="addStockedProduct">
+            <legend><strong>Add Stocked Product</strong></legend>
             <fieldset class="fields">
                 <div>
-                    <label> Full Name </label> <input type="text" name="full_name">
+                    <label> Vendor </label>
+                    <select name="vendor">
+                        <option>Sun Farm</option>
+                        <option>Moon Farm</option>
+                    </select>
                 </div>
                 <div>
-                    <label> Email </label> <input type="text" name="email">
+                    <label> Product </label>
+                    <select name="prodcut">
+                        <option>Carrot</option>
+                        <option>Cheese</option>
+                    </select>
                 </div>
                 <div>
-                    <label> Phone number </label> <input type="text" name="phone_number">
-                </div>
-                <div>
-                    <label> Admin? </label> <input type="checkbox" name="is_admin">
+                    <label> Unit price </label> <input type="number" name="unit_price">
                 </div>
             </fieldset>
-            <input class="btn" type="submit" id="addPlanet" value="Add a Person">
+            <input class="btn" type="submit" id="addStockedProduct" value="Add stocked product">
             <input class="btn" type="button" value="cancel">
         </form>
         <!--add new planet-->
     </div><!-- insert -->
 
     <p>&nbsp;</p>
-    <div id="update" style="display: block">
-        <form id="updatePerson">
-            <legend><strong>Update Person</strong></legend>
-            <fieldset class="fields">
-                <label>ID:</label> 1
-                <div>
-                    <label> Full Name </label> <input type="text" name="full_name" value="Carl Bun">
-                </div>
-                <div>
-                    <label> Email </label> <input type="text" name="email" value="carlb@yahoo.com">
-                </div>
-                <div>
-                    <label> Phone number </label> <input type="text" name="phone_number" value="(541)879-8276">
-                </div>
-                <div>
-                    <label> Admin? </label> <input type="checkbox" name="is_admin" checked=true>
-                </div>
-
-            </fieldset>
-            <input class="btn" type="submit" id="UpdateSavePerson" value="Save Update Person">
-            <input class="btn" type="button" value="cancel">
-        </form>
-    </div><!-- update -->
-    <p>&nbsp;</p>
     <div id="delete" style="display: block">
-        <form id="deletePerson">
-            <legend><strong>Delete Person</strong></legend>
+        <form id="deleteStockedProduct">
+            <legend><strong>Delete Stocked Product</strong></legend>
             <fieldset class="fields">
                 <p>Are you sure you wish to delete the following?</p>
-                <label>ID:</label> 1
-                <label> Full name </label> Carl Bun
+                <div>
+                    <label>ID:</label> 1
+                </div>
+                <div>
+                    <label> Vendor name: </label> Sun Farm
+                </div>
+                <div>
+                    <label> Product name </label> Carrot
+                </div>
 
             </fieldset>
-            <input class="btn" type="submit" id="DeletePerson" value="Delete Person">
+            <input class="btn" type="submit" id="DeleteStockedProduct" value="Delete stocked product">
             <input class="btn" type="button" value="cancel">
         </form>
     </div><!-- delete -->
-   
+
 </body>
 
 </html>
