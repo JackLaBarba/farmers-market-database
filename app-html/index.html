@@ -1,94 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Page</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link href="css/style.css" rel="stylesheet" />
+<title>Farmers Market DB - Dashboard</title>
+<!-- Styling -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="css/style.css">
+<script>
+$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 </head>
 <body>
-    <div id="wrapper">
-        <nav class="navbar bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html"><img src="assets/logo.jpg" width="150px"/></a>
-          <form class="d-flex" role="search">
-            <p>Admin <i class="bi bi-person"></i></p>
-          </form>
-        </div>
-        </nav>
-        <div class="container">
-            <div class="card">
-                <div class="content">
-                  <a href="people.html">
-                    <div class="text_box">
-                      <h3>People</h3>
-                    </div>
-                  </a> 
-                </div>
-            </div>
-            <div class="card">
-                <div class="content">
-                  <a href="vendors.html">
-                    <div class="text_box">
-                      <h3>Vendors</h3>
-                    </div>
-                  </a>  
-                </div>
-            </div>
-            <div class="card">
-                <div class="content">
-                  <a href="products.html">
-                    <div class="text_box">
-                      <h3>Products</h3>
-                    </div>
-                  </a>  
-                </div>
-            </div>
-            <div class="card">
-                <div class="content">
-                  <a href="stocked_products.html">
-                    <div class="text_box">
-                      <h3>Stocked Products</h3>
-                    </div>
-                  </a>  
-                </div>
-            </div>
-        </div> 
-        <div class="container">
-            <div class="card">
-                <div class="content">
-                  <a href="events.html">
-                    <div class="text_box">
-                      <h3>Events</h3>
-                    </div>
-                  </a>  
-                </div>
-            </div>
-            <div class="card">
-                <div class="content">
-                  <a href="vendors_at_events.html">
-                    <div class="text_box">
-                      <a href=""><h3>Event Vendors</h3></a>
-                    </div>
-                  </a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="content">
-                    <a href="locations.html">
-                      <div class="text_box">
-                        <h3>Locations</h3>
-                      </div>
-                    </a> 
-                </div>
-            </div>
-            
-        </div> 
+<div class="row" style="padding: 15px 0px;">
+  <nav class="navbar fixed-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html"><img src="assets/logo.jpg" class="logo"/></a>
+      <form class="d-flex" role="search">
+        <p>Admin <i class="bi bi-person"></i></p>
+      </form>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </nav>
+</div>
+<div class="row">
+  <div class="col-2">
+    <div class="wrapper d-flex">
+      <div class="sidebar"><br/>
+      <ul class="nav-list">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="people.html">People</a></li>
+        <li><a href="vendors.html">Vendors</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="stocked_products.html">Stocked Products</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="vendors_at_events.html">Vendors At Events</a></li>
+        <li><a href="locations.html">Locations</a></li>
+      </ul>
+          </div>
+    </div>
+  </div>
+  <div class="col-10">
+    <div class="row" id="dashboard">
+       <h1>Farmers Market Database</h1>
+       <p style="text-align: justify; padding-top: 10px;">The Local Farmers's Market Association of Portland (LFMAP) organizes 
+          farmer's markets in the Portland Area. LFMAP hosts 25 events per month. 
+          These events occur in different locations across the state and each event
+          has zero or more associated vendors. There are 30 vendors associated with
+          LFMAP and this list is growing. Each vendor sells zero or more products.
+          Products can be sold by more than one vendor. Currently there are 110 
+          different products. Each vendor has one primary contact person. Each 
+          person can be the primary contact for zero or more vendors. Some people 
+          are admins for the LFMAP database. Admins do not necessarily need to be a 
+          contact for any vendor.
+      </p>
+    </div>
+  </div>
+</div>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </html>
