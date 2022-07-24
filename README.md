@@ -23,6 +23,6 @@ People, Events, and Locations.
 
 4. run `npm install`
 
-5. run `DB_USER=cs340_your_onid DB_NAME=cs340_your_onid DB_PASSWORD=your_password npm run start` (be sure to set the env vars with your own details)
+5. run `DB_USER=cs340_your_onid DB_NAME=cs340_your_onid DB_PASSWORD=your_password node app.js` (be sure to set the env vars with your own details)
 
 If you need to change the app port, set the APP_PORT= env var.
