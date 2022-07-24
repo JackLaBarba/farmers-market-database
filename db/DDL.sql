@@ -10,7 +10,7 @@ CREATE TABLE `vendors` (
 	`vendor_id` int NOT NULL AUTO_INCREMENT,
 	`business_name` varchar(1024) NOT NULL,
 	`website_url` varchar(1024) NOT NULL,
-	`person_id` int NOT NULL,
+	`person_id` int,
 	PRIMARY KEY (`vendor_id`)
 );
 
