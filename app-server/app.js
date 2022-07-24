@@ -1,11 +1,13 @@
 const express = require('express');
 const env = require('env-var');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const { createMysqlPool } = require('./database');
 const app = express();
 
 app.use(cors());
+app.use(bodyParser.json())
 
 // Extract configuration from environment variables
 // and assert that the required configuration is present.
@@ -30,10 +32,31 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/api/products', async (req, res) => {
-    const query = "select * from products;"
+    const query = `
+    SELECT
+      products.product_id,
+      products.name,
+      products.description,
+      products.unit
+    FROM products
+    ORDER BY products.product_id ASC;
+    `;
     const result = await mysqlPool.query(query);
     res.send(JSON.stringify(result[0]));
 });
+
+app.post('/api/products', async (req, res) => {
+    const { name, description, unit} = req.body;
+    const query = `
+    INSERT INTO products 
+    (name, description, unit) 
+    VALUES 
+    (?, ?, ?);
+    `;
+    const result = await mysqlPool.query(query, [name, description, unit]);
+    res.send(JSON.stringify(result[0]));
+});
+
 
 app.listen(app_port, () => {
     console.log(`App listening on port ${app_port}`);

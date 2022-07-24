@@ -1,13 +1,26 @@
 import { useEffect, useState } from "react";
 import config from "../config";
 
+import ProductForm from "../components/ProductForm";
+
 export default function Products() {
   const [products, setProducts] = useState([]);
-  
+
   async function fetchProducts() {
-    const url = `${config.backend_url}products`;
+    const url = `${config.backend_url}/products`;
     const response = await fetch(url, { method: 'GET' });
     setProducts(await response.json());
+  }
+
+  async function saveProduct(attributes) {
+    const url = `${config.backend_url}/products`;
+    await fetch(url, 
+      { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' }, 
+        body: JSON.stringify(attributes) 
+      });
+    await fetchProducts(); // reload products after we've saved the new one.
   }
 
   // Load products from the server when the component renders.
@@ -36,5 +49,7 @@ export default function Products() {
         )}
       </tbody>
     </table>
+    <ProductForm submitAction={saveProduct}/>
+    
   </div>;
 }

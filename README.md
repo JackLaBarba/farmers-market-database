@@ -21,7 +21,10 @@ People, Events, and Locations.
 
 # Setup
 
-The following assumes you've cloned the repo somewhere on the flip server.
+Assumptions:
+
+* you've cloned the repo somewhere on the flip server.
+* you're connected to the OSU VPN
 
 ## app-server
 
