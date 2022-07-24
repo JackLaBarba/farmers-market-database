@@ -60,7 +60,8 @@ SELECT
   stocked_products.stocked_product_id,
   vendors.name,
   products.name,
-  stocked_prodcts.unit_price_cent
+  stocked_prodcts.unit_price_cent,
+  products.unit
 FROM stocked_products
 LEFT JOIN vendors
   ON stocked_products.vendor_id = vendors.vendor_id
