@@ -99,6 +99,22 @@ ORDER BY vendors.vendor_id ASC;
 INSERT INTO events (name, starts_at, ends_at, location_id) VALUES
 (:name, :starts_at, :ends_at, :location_id);
 
+-- CREATE on events.html, when specifying a vendor to add simultaneously.
+--
+-- This satifies the requirement that there is at least one entity that,
+-- when inserted to, also creates an entry in a corresponding M:M
+-- intersection table.
+--
+-- These INSERTS are wrapped in a transaction to prevent cases where
+-- only one of these INSERTS succeeds due to an error. If one fails, they
+-- should both fail.
+BEGIN;
+INSERT INTO events (name, starts_at, ends_at, location_id) VALUES
+(:name, :starts_at, :ends_at, :location_id);
+INSERT INTO vendors_at_events (vendor_id, event_id) VALUES
+(:vendor_id, LAST_INSERT_ID());
+COMMIT;
+
 -- CREATE on products.html
 INSERT INTO products (name, description, unit) VALUES 
 (:name, :description, :unit);
