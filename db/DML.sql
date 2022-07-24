@@ -6,24 +6,29 @@
 --
 
 -- READ on events.html
+-- Allows filtering on dynamically set properities
 SELECT 
   events.event_id
   events.name, 
   events.starts_at,
   events.ends_at,
-  events.location_id
+  locations.name
 FROM events
+LEFT JOIN locations
+  on events.location_id = locations.location_id
+WHERE events.name LIKE '%:name%'
+  AND events.starts_at > ':starts_after'
+  AND events.ends_at > ':ends_before'
+  AND location.location_id = ':location_id'
 ORDER BY events.event_id ASC;
 
 -- READ on products.html
--- Allows the user to search for a product name
 SELECT
   products.product_id
   products.name,
   products.description,
   products.unit
 FROM products
-WHERE products.name LIKE '%:user_query%'
 ORDER BY products.product_id ASC;
 
 -- READ on locations.html

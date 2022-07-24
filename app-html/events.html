@@ -97,11 +97,36 @@ $(document).ready(function(){
                         </ul>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>
     <div id="group_form">
+        <form>
+            <form id="filterEvents">
+                <legend><strong>Filter Events</strong></legend>
+                <fieldset class="fields">
+                    <div>
+                        <label> Name </label> <input type="text" name="name">
+                    </div>
+                    <div>
+                        <label> Starting after</label> <input type="datetime-local" name="starts_after">
+                    </div>
+                    <div>
+                        <label> Ending before</label> <input type="datetime-local" name="ends_before">
+                    </div>
+                    <div>
+                        <label> Location </label>
+                        <select name="location_id">
+                            <option value=""></option>
+                            <option value="1">County Fairgrounds</option>
+                            <option value="2">City Park</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <input class="btn" type="submit" id="addEvent" value="Filter">
+                <input class="btn" type="button" value="clear">
+            </form>                        
+        </form>
         <div id="insert">
             <form id="addEvent">
                 <legend><strong>Add Event</strong></legend>
