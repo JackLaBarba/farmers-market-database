@@ -72,7 +72,6 @@ $(document).ready(function(){
                                 <td>$0.50</td>
                                 <td>pound</td>
                                 <td>
-                                   <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
@@ -83,7 +82,6 @@ $(document).ready(function(){
                                 <td>$0.90</td>
                                 <td>ounce</td>
                                 <td>
-                                    <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                     <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
@@ -126,33 +124,11 @@ $(document).ready(function(){
                     <label> Unit price </label> <input type="number" name="unit_price">
                 </div>
             </fieldset>
-            <input class="btn" type="submit" id="addStockedProduct" value="Add stocked product">
-            <input class="btn" type="button" value="cancel">
+            <input class="btn btn-secondary" type="submit" id="addStockedProduct" value="Submit">
+            <input class="btn btn-secondary" type="button" value="Cancel">
         </form>
         <!--add new planet-->
     </div><!-- insert -->
-
-    <p>&nbsp;</p>
-    <div id="delete" style="display: block">
-        <form id="deleteStockedProduct">
-            <legend><strong>Delete Stocked Product</strong></legend>
-            <fieldset class="fields">
-                <p>Are you sure you wish to delete the following?</p>
-                <div>
-                    <label>ID:</label> 1
-                </div>
-                <div>
-                    <label> Vendor name: </label> Sun Farm
-                </div>
-                <div>
-                    <label> Product name </label> Carrot
-                </div>
-
-            </fieldset>
-            <input class="btn" type="submit" id="DeleteStockedProduct" value="Delete stocked product">
-            <input class="btn" type="button" value="cancel">
-        </form>
-    </div><!-- delete -->
     </div>
   </div>
 </div>

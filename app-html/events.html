@@ -8,11 +8,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/style.css">
-<script>
-$(document).ready(function(){
-	$('[data-toggle="tooltip"]').tooltip();
-});
-</script>
 </head>
 <body>
 <div class="row" id="top_nav">
@@ -60,7 +55,6 @@ $(document).ready(function(){
                                 <th>Starts at</th>
                                 <th>Ends at</th>
                                 <th>Location name</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -70,10 +64,6 @@ $(document).ready(function(){
                                 <td>2022-07-04 10:00:00</td>
                                 <td>2022-07-04 16:00:00</td>
                                 <td>County Fairgrounds</td>
-                                <td>
-                                   <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                   <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                                </td>
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -81,10 +71,6 @@ $(document).ready(function(){
                                 <td>2022-04-04 10:00:00</td>
                                 <td>2022-04-04 16:00:00</td>
                                 <td>City Park</td>
-                                <td>
-                                    <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -123,8 +109,8 @@ $(document).ready(function(){
                         </select>
                     </div>
                 </fieldset>
-                <input class="btn" type="submit" id="addEvent" value="Filter">
-                <input class="btn" type="button" value="clear">
+                <input class="btn btn-secondary" type="submit" id="filterEvent" value="Filter">
+                <input class="btn btn-secondary" type="button" value="Clear">
             </form>                        
         </form>
         <div id="insert">
@@ -158,8 +144,8 @@ $(document).ready(function(){
                         <a href="vendors_at_events.html">Vendors At Events</a>
                     </div>
                 </fieldset>
-                <input class="btn" type="submit" id="addEvent" value="Add Event">
-                <input class="btn" type="button" value="cancel">
+                <input class="btn btn-secondary" type="submit" id="addEvent" value="Submit">
+                <input class="btn btn-secondary" type="button" value="Cancel">
             </form>
             <!--add new data-->
         </div><!-- insert --> 

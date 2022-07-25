@@ -120,8 +120,8 @@ $(document).ready(function(){
                         <label> Admin? </label> <input type="checkbox" name="is_admin">
                     </div>
                 </fieldset>
-                <input class="btn" type="submit" id="addPlanet" value="Add a Person">
-                <input class="btn" type="button" value="cancel">
+                <input class="btn btn-secondary" type="submit" id="addPerson" value="Submit">
+                <input class="btn btn-secondary" type="button" value="Cancel">
             </form>
             <!--add new data-->
         </div><!-- insert -->
@@ -146,23 +146,10 @@ $(document).ready(function(){
                     </div>
     
                 </fieldset>
-                <input class="btn" type="submit" id="UpdateSavePerson" value="Save Update Person">
-                <input class="btn" type="button" value="cancel">
+                <input class="btn btn-secondary" type="submit" id="updatePerson" value="Save">
+                <input class="btn btn-secondary" type="button" value="Cancel">
             </form>
         </div><!-- update -->
-        <p>&nbsp;</p>
-        <div id="delete" style="display: block">
-            <form id="deletePerson">
-                <legend><strong>Delete Person</strong></legend>
-                <fieldset class="fields">
-                    <p>Are you sure you wish to delete the following?</p>
-                    <label>ID:</label> 1
-                    <label> Full name </label> Carl Bun
-                </fieldset>
-                <input class="btn" type="submit" id="DeletePerson" value="Delete Person">
-                <input class="btn" type="button" value="cancel">
-            </form>
-        </div><!-- delete -->
     </div>
   </div>
 </div>
