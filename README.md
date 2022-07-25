@@ -17,9 +17,12 @@ People, Events, and Locations.
 
 1. MySQL - the data persistence layer
 2. app-server - HTTP server connects to MySQL.
-3. app-client - react app that runs in the browser, this makes HTTP requests to app-server.
+3. app-client - react app that runs in the browser, this makes HTTP requests to
+   app-server.
 
-# Setup
+# Development Environment Setup
+
+Here's how to set up the app for development
 
 Assumptions:
 
@@ -36,7 +39,9 @@ Assumptions:
 
 4. run `npm install`
 
-5. run `DB_USER=cs340_your_onid DB_NAME=cs340_your_onid DB_PASSWORD=your_password node app.js` (be sure to set the env vars with your own details)
+5. run
+   `DB_USER=cs340_your_onid DB_NAME=cs340_your_onid DB_PASSWORD=your_password node app.js`
+   (be sure to set the env vars with your own details)
 
 If you need to change the app port, set the APP_PORT= env var. By default, the
 app will be available at http://flip1.engr.oregonstate.edu:4224/
@@ -58,5 +63,47 @@ Change PORT= if somebody else is using that port.
 Note: if you changed the port for app-server above, you'll need to update
 app-client/src/config.js
 
+# Production App Deployment
 
+In "production" we won't run the React dev server. Instead, we'll build a static
+version of the React app, and serve it from the Express app. This means that we
+only need to keep one server process running.
 
+Abstractly, the steps for production deployment are:
+
+1. install/update npm package dependencies
+
+2. build a static version of the React app in app-client
+
+3. copy the static files of the React app into app-server/public/
+
+4. start or restart the Express server in app-server.
+
+Concretely, here's how to deploy the app to flip:
+
+1. ssh into flip and clone or pull this repo
+
+2. run `nvm use` to ensure you're using the correct nodejs version.
+
+3. run `make server-build`. This will install all package dependencies, build
+   the frontend app, and copy it into place.
+
+4. run `cd app-server`
+
+Now, restart or start the Express server using `forever`. 
+
+To start it for the first time, run,
+
+``` 
+DB_USER=cs340_your_onid DB_NAME=cs340_your_onid DB_PASSWORD=your_password npm exec forever start app.js
+```
+
+To restart the server, run,
+```
+DB_USER=cs340_your_onid DB_NAME=cs340_your_onid DB_PASSWORD=your_password npm exec forever restart app.js
+```
+
+To see the status of the server process, run,
+```
+npm exec forever list
+```
