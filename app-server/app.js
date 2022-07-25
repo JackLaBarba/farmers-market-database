@@ -46,24 +46,38 @@ app.get('/api/products', async (req, res) => {
 });
 
 app.post('/api/products', async (req, res) => {
-    const { name, description, unit} = req.body;
     const query = `
     INSERT INTO products 
     (name, description, unit) 
     VALUES 
     (?, ?, ?);
     `;
+    const { name, description, unit} = req.body;
     const result = await mysqlPool.query(query, [name, description, unit]);
     res.send(JSON.stringify(result[0]));
 });
 
 app.delete('/api/products/:product_id', async (req, res) => {
-    req.params.product_id
     const query = `
     DELETE FROM products
     WHERE products.product_id = ?;
     `;
     const result = await mysqlPool.query(query, req.params.product_id);
+    res.send(JSON.stringify(result[0]));
+});
+
+app.put('/api/products/:product_id', async (req, res) => {
+    const query = `
+    UPDATE products SET
+    name = ?,
+    description = ?,
+    unit = ?
+    WHERE products.product_id = ?;
+    `;
+    const { name, description, unit} = req.body;
+    const result = await mysqlPool.query(query,
+        [name, description, unit, req.params.product_id]
+    );
     res.send(JSON.stringify(result[0]));
 });
 

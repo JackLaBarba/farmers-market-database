@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import config from "../config";
 import {
+  Link,
   Outlet
 } from "react-router-dom";
-
-import ProductForm from "../components/ProductForm";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -24,6 +23,17 @@ export default function Products() {
         body: JSON.stringify(attributes)
       });
     await readProducts(); // reload products after we've saved the new one.
+  }
+
+  async function updateProduct(product_id, attributes) {
+    const url = `${config.backend_url}/products/${product_id}`;
+    await fetch(url,
+      {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(attributes)
+      });
+    await readProducts(); // reload products after we've updated this new one.
   }
 
   async function deleteProduct(product_id) {
@@ -61,7 +71,9 @@ export default function Products() {
             <td>{product.unit}</td>
             <td>
               <button className="edit" title="Edit" data-toggle="tooltip" >
-                <i className="material-icons">&#xE254;</i>
+                <Link to={`/products/${product.product_id}/update`}>
+                  <i className="material-icons">&#xE254;</i>
+                </Link>
               </button>
               <button className="delete" title="Delete" data-toggle="tooltip"
                 onClick={() => deleteProduct(product.product_id)}>
@@ -72,6 +84,6 @@ export default function Products() {
         )}
       </tbody>
     </table>
-    <Outlet context={{ createProduct }} />
+    <Outlet context={{ createProduct, updateProduct, products }} />
   </div>;
 }
