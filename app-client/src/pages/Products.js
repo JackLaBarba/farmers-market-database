@@ -36,6 +36,7 @@ export default function Products() {
           <th>Name</th>
           <th>Description</th>
           <th>Unit</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -45,6 +46,10 @@ export default function Products() {
             <td>{product.name}</td>
             <td>{product.description}</td>
             <td>{product.unit}</td>
+            <td>
+                <button className="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></button>
+                <button className="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></button>
+            </td>
           </tr>
         )}
       </tbody>
