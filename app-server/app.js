@@ -7,7 +7,8 @@ const { createMysqlPool } = require('./database');
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(express.static('public'));
 
 // Extract configuration from environment variables
 // and assert that the required configuration is present.
@@ -21,15 +22,6 @@ const app_port = env.get('APP_PORT').required().asInt();
 
 console.log("connecting to db");
 const mysqlPool = createMysqlPool(db_host, db_user, db_password, db_name);
-
-
-// Shows all the tables in the DB.
-// Not important for our API, but demonstrates that we can connect to and query
-// a mysql db.
-app.get('/', async (req, res) => {
-    const result = await mysqlPool.query("show tables;");
-    res.send(JSON.stringify(result[0]));
-});
 
 app.get('/api/products', async (req, res) => {
     const query = `
