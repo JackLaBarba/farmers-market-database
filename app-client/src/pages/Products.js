@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import config from "../config";
+import {
+  Outlet
+} from "react-router-dom";
 
 import ProductForm from "../components/ProductForm";
 
@@ -14,20 +17,20 @@ export default function Products() {
 
   async function createProduct(attributes) {
     const url = `${config.backend_url}/products`;
-    await fetch(url, 
-      { 
-        method: 'POST', 
-        headers: { 'Content-Type': 'application/json' }, 
-        body: JSON.stringify(attributes) 
+    await fetch(url,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(attributes)
       });
     await readProducts(); // reload products after we've saved the new one.
   }
 
   async function deleteProduct(product_id) {
     const url = `${config.backend_url}/products/${product_id}`;
-    await fetch(url, 
-      { 
-        method: 'DELETE', 
+    await fetch(url,
+      {
+        method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
       });
     await readProducts(); // reload products after we've deleted this one.
@@ -69,7 +72,6 @@ export default function Products() {
         )}
       </tbody>
     </table>
-    <ProductForm submitAction={createProduct}/>
-    
+    <Outlet context={{ createProduct }} />
   </div>;
 }

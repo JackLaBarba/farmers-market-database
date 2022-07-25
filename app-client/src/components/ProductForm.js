@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 
-export default function ProductForm({submitAction}) {
+export default function ProductForm({ submitAction, cancelAction }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [unit, setUnit] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
-    submitAction({name, description, unit});
+    submitAction({ name, description, unit });
+  }
+
+  const onCancel = (e) => {
+    e.preventDefault();
+    cancelAction();
   }
 
   return (
@@ -29,8 +34,8 @@ export default function ProductForm({submitAction}) {
               <input type="text" name="unit" onChange={e => setUnit(e.target.value)} />
             </div>
           </fieldset>
-          <input className="btn" type="submit" onClick={onSubmit} />
-          <input className="btn" type="button" value="cancel" />
+          <button className="btn-primary" onClick={onSubmit}>Submit</button>
+          <button className="btn-secondary" onClick={onCancel}>cancel</button>
         </form>
       </div>
     </div>);
