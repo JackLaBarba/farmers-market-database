@@ -12,7 +12,7 @@ export default function SiteContainer() {
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
       <h2>Farmers Market Database</h2>
-      <a class="navbar-brand" href="index.html"><img src={require("../logo.jpg")} alt="logo" class="logo"/></a>
+      <a className="navbar-brand" href="index.html"><img src={require("../logo.jpg")} alt="logo" className="logo"/></a>
       <nav>
         <ul>
           <li>

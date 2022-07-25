@@ -57,6 +57,15 @@ app.post('/api/products', async (req, res) => {
     res.send(JSON.stringify(result[0]));
 });
 
+app.delete('/api/products/:product_id', async (req, res) => {
+    req.params.product_id
+    const query = `
+    DELETE FROM products
+    WHERE products.product_id = ?;
+    `;
+    const result = await mysqlPool.query(query, req.params.product_id);
+    res.send(JSON.stringify(result[0]));
+});
 
 app.listen(app_port, () => {
     console.log(`App listening on port ${app_port}`);

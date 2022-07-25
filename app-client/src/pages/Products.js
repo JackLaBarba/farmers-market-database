@@ -6,13 +6,13 @@ import ProductForm from "../components/ProductForm";
 export default function Products() {
   const [products, setProducts] = useState([]);
 
-  async function fetchProducts() {
+  async function readProducts() {
     const url = `${config.backend_url}/products`;
     const response = await fetch(url, { method: 'GET' });
     setProducts(await response.json());
   }
 
-  async function saveProduct(attributes) {
+  async function createProduct(attributes) {
     const url = `${config.backend_url}/products`;
     await fetch(url, 
       { 
@@ -20,12 +20,22 @@ export default function Products() {
         headers: { 'Content-Type': 'application/json' }, 
         body: JSON.stringify(attributes) 
       });
-    await fetchProducts(); // reload products after we've saved the new one.
+    await readProducts(); // reload products after we've saved the new one.
+  }
+
+  async function deleteProduct(product_id) {
+    const url = `${config.backend_url}/products/${product_id}`;
+    await fetch(url, 
+      { 
+        method: 'DELETE', 
+        headers: { 'Content-Type': 'application/json' }
+      });
+    await readProducts(); // reload products after we've deleted this one.
   }
 
   // Load products from the server when the component renders.
   useEffect(() => {
-    fetchProducts();
+    readProducts();
   }, []);
 
   return <div><h2>Products</h2>
@@ -47,14 +57,19 @@ export default function Products() {
             <td>{product.description}</td>
             <td>{product.unit}</td>
             <td>
-                <button className="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></button>
-                <button className="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></button>
+              <button className="edit" title="Edit" data-toggle="tooltip" >
+                <i className="material-icons">&#xE254;</i>
+              </button>
+              <button className="delete" title="Delete" data-toggle="tooltip"
+                onClick={() => deleteProduct(product.product_id)}>
+                <i className="material-icons">&#xE872;</i>
+              </button>
             </td>
           </tr>
         )}
       </tbody>
     </table>
-    <ProductForm submitAction={saveProduct}/>
+    <ProductForm submitAction={createProduct}/>
     
   </div>;
 }
