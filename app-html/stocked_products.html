@@ -13,6 +13,14 @@
 $(document).ready(function(){
 	$('[data-toggle="tooltip"]').tooltip();
 });
+function delete1(){
+    var delete_table1 = document.getElementById("row1");
+ delete_table1.parentElement.removeChild(delete_table1);
+}
+function delete2(){
+    var delete_table2 = document.getElementById("row2");
+ delete_table2.parentElement.removeChild(delete_table2);
+}
 </script>
 </head>
 <body>
@@ -65,24 +73,24 @@ $(document).ready(function(){
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr id="row1">
                                 <td>1</td>
                                 <td>Sun Farm</td>
                                 <td>Carrot</td>
                                 <td>$0.50</td>
                                 <td>pound</td>
                                 <td>
-                                   <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                   <a href="#" onclick=delete1() class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="row2">
                                 <td>2</td>
                                 <td>Moon Farm</td>
                                 <td>Cheese</td>
                                 <td>$0.90</td>
                                 <td>ounce</td>
                                 <td>
-                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                    <a href="#" onclick=delete2()  class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
                         </tbody>
