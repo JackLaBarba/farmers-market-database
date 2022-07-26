@@ -65,14 +65,14 @@ SELECT
   stocked_products.stocked_product_id,
   vendors.name,
   products.name,
-  stocked_prodcts.unit_price_cent,
+  stocked_products.unit_price_cent,
   products.unit
 FROM stocked_products
 LEFT JOIN vendors
   ON stocked_products.vendor_id = vendors.vendor_id
 LEFT JOIN products
   ON stocked_products.product_id = products.product_id
-ORDER BY stocked_prodcts.stocked_product_id ASC;
+ORDER BY stocked_products.stocked_product_id ASC;
 
 -- READ on vendors_at_events.html
 SELECT

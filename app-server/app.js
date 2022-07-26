@@ -155,7 +155,38 @@ app.put('/api/products/:product_id', async (req, res) => {
     );
     res.send(JSON.stringify(result[0]));
 });
+
 //CRUD for stocked_products table
+app.get('/api/stocked_products', async (req, res) => {
+    const query = `
+    SELECT
+      stocked_products.stocked_product_id,
+      vendors.name,
+      products.name,
+      stocked_products.unit_price_cent,
+      products.unit
+    FROM stocked_products
+    LEFT JOIN vendors
+    ON stocked_products.vendor_id = vendors.vendor_id
+    LEFT JOIN products
+    ON stocked_products.product_id = products.product_id
+    ORDER BY stocked_products.stocked_product_id ASC;
+    `;
+    const result = await mysqlPool.query(query);
+    res.send(JSON.stringify(result[0]));
+});
+
+app.post('/api/stocked_products', async (req, res) => {
+    const query = `
+    INSERT INTO stocked_products 
+    (vendor_id, product_id, unit_price_cent) 
+    VALUES 
+    (?, ?, ?);
+    `;
+    const { vendor_id, product_id, unit_price_cent} = req.body;
+    const result = await mysqlPool.query(query, [vendor_id, product_id, unit_price_cent]);
+    res.send(JSON.stringify(result[0]));
+});
 
 //CRUD for locations table
 app.get('/api/locations', async (req, res) => {
@@ -183,6 +214,7 @@ app.post('/api/locations', async (req, res) => {
     const result = await mysqlPool.query(query, [name, street_address, has_parking, contact_information]);
     res.send(JSON.stringify(result[0]));
 });
+
 //CRUD for events table
 
 //CRUD for vendors_at_events table
