@@ -26,13 +26,13 @@ export default function App() {
     <div>
       <div>
       <Router>
-        <Container class="logo_container">
+        <Container className="logo_container">
           <Row>
             <Col>
               <a className="navbar-brand" href="/"><img src={require("./logo.jpg")} alt="logo" className="logo"/></a>
             </Col>
             <Col xs={10}>
-              <h2 class="header_title">FARMERS MARKET DATABASE</h2>
+              <h2 className="header_title">FARMERS MARKET DATABASE</h2>
             </Col>
           </Row>
         </Container>

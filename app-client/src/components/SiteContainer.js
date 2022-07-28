@@ -3,7 +3,7 @@ import {Link,Outlet} from "react-router-dom";
 export default function SiteContainer() {
   return (
     <div>
-      <nav class="navigation">
+      <nav className="navigation">
         <ul>
           <li>
             <Link to="/">Home</Link>
