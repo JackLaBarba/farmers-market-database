@@ -216,8 +216,36 @@ app.post('/api/locations', async (req, res) => {
 });
 
 //CRUD for events table
+app.get('/api/events', async (req, res) => {
+    const query = `
+    SELECT
+      events.event_id,
+      events.name,
+      events.starts_at,
+      events.ends_at
+      locations.name
+    FROM events
+    LEFT JOIN locations
+    ON events.location_id = locations.location_id
+    ORDER BY events.event_id ASC;
+    `;
+    const result = await mysqlPool.query(query);
+    res.send(JSON.stringify(result[0]));
+});
+
+app.post('/api/events', async (req, res) => {
+    const query = `
+    INSERT INTO events (name, starts_at, ends_at, location_id) 
+    VALUES
+    (?, ?, ?, ?);
+    `;
+    const { name, starts_at, ends_at, location_id} = req.body;
+    const result = await mysqlPool.query(query, [name, starts_at, ends_at, location_id]);
+    res.send(JSON.stringify(result[0]));
+});
 
 //CRUD for vendors_at_events table
+
 
 app.listen(app_port, () => {
     console.log(`App listening on port ${app_port}`);
