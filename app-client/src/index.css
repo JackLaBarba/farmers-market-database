@@ -1,12 +1,48 @@
 body {
   color: #38393c;
-  background: #f5f5f5;
+  /* padding: 10px; */
   font-family: 'Roboto', sans-serif;
 }
 .logo{
   width:130px;
   height: auto;
 }
+.header_title{
+  padding-top: 20px;
+}
+.container{
+  padding:0;
+  margin: 0
+}
+nav.navigation{
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  background: #4e592a;  
+}
+.navigation{
+  margin-top: 10px;
+}
+.navigation ul{
+  list-style-type: none;
+}
+.navigation ul li{
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.navigation ul li a{
+  color: #fff;
+}
+
+.navigation ul li:hover{
+  background: grey;
+  }
+.navigation ul li a:hover{
+  color: #fff;
+  text-decoration: none;
+}
+
+
 .table-responsive {
   margin: 30px 0;
 }
@@ -24,27 +60,7 @@ body {
   margin: 17px 0 0;
   font-size: 22px;
 }
-.search-box {
-  position: relative;        
-  float: right;
-}
-.search-box input {
-  height: 34px;
-  border-radius: 20px;
-  padding-left: 35px;
-  border-color: #ddd;
-  box-shadow: none;
-}
-.search-box input:focus {
-  border-color: #3FBAE4;
-}
-.search-box i {
-  color: #a0a5b1;
-  position: absolute;
-  font-size: 19px;
-  top: 8px;
-  left: 10px;
-}
+
 #table_row{
   padding-top: 20px;
 }
@@ -82,56 +98,17 @@ table.table td a.delete {
 table.table td i {
   font-size: 19px;
 }
-.page-item.active .page-link {
-  background-color: #2f4f3d;
-  border-color: #06561e;
-}   
-.pagination {
-  float: right;
-  margin: 0 0 5px;
-}
-.pagination li a {
-  border: none;
-  font-size: 95%;
-  width: 30px;
-  height: 30px;
-  color: #999;
-  margin: 0 2px;
-  line-height: 30px;
-  border-radius: 30px !important;
-  text-align: center;
-  padding: 0;
-}
-.pagination li a:hover {
-  color: #666;
-}	
-.pagination li.active a {
-  background: #4e592a;
-}
-.pagination li.active a:hover {        
-  background: #4e592a;
-}
-.pagination li.disabled i {
-  color: #ccc;
-}
-.pagination li i {
-  font-size: 16px;
-  padding-top: 6px
-}
-.hint-text {
-  float: left;
-  margin-top: 6px;
-  font-size: 95%;
-}
+
+
 /* side nav*/
-.wrapper{
+/* .wrapper{
 position: relative;
 }
 .sidebar{
 position: fixed;
 width: 210px;
 height: 100%;
-  background: #4e592a;
+background: #4e592a;
 padding: 35px 0px;
     
 }
@@ -148,24 +125,9 @@ width: 25px!important;
 }
 .wrapper .sidebar ul li a .far{
 width: 25px!important;
-}
-.wrapper .sidebar ul li:hover{
-background: grey;
-}
-.wrapper .sidebar ul li a:hover{
-color: #fff;
-text-decoration: none;
-}
-.nav-list{
-  list-style-type: none;
-  padding-left: 0;
-}
-#group_form{
+} */
+
+/* #group_form{
   padding: 0px 30px;
-}
-#dashboard{
-padding: 100px 150px;
-}
-#top_nav{
-  padding: 15px 0px;
-}
+} */
+
