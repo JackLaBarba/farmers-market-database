@@ -5,11 +5,11 @@ function createMysqlPool(host, username, password, database) {
     return mysql.createPool({
         connectionLimit: 10,
         host: host,
-        user: user,
+        user: username,
         password: password,
         database: database
     });
 }
 
-// Export it for use in our applicaiton
+// Export it for use in our applicaton
 module.exports.createMysqlPool = createMysqlPool;
