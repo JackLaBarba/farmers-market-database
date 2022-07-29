@@ -191,18 +191,13 @@ app.post('/api/stocked_products', async (req, res) => {
 //CRUD for locations table
 app.get('/api/locations', async (req, res) => {
     const query = `
-    SELECT
-      locations.location_id,
-      locations.name,
-      locations.street_address,
-      locations.has_parking,
-      locations.contact_information,
-    FROM locations
+    SELECT * FROM locations
     ORDER BY locations.location_id ASC;
     `;
     const result = await mysqlPool.query(query);
     res.send(JSON.stringify(result[0]));
 });
+
 app.post('/api/locations', async (req, res) => {
     const query = `
     INSERT INTO locations 

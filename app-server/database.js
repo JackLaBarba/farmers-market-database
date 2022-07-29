@@ -5,7 +5,7 @@ function createMysqlPool(host, username, password, database) {
     return mysql.createPool({
         connectionLimit: 10,
         host: host,
-        user: username,
+        user: user,
         password: password,
         database: database
     });
