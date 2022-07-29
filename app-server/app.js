@@ -251,7 +251,7 @@ app.get('/api/vendors_at_events', async (req, res) => {
     ON vendors_at_events.vendor_id =  vendors.vendor_id
     LEFT JOIN events
     ON vendors_at_events.event_id = events.event_id
-    GROUP BY vendors_at_events.vendor_at_event_id ASC;
+    GROUP BY vendors_at_events.vendor_at_event_id;
     `;
     const result = await mysqlPool.query(query);
     res.send(JSON.stringify(result[0]));
