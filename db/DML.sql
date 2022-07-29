@@ -151,7 +151,7 @@ INSERT INTO vendors (business_name, website_url, person_id) VALUES
 (:business_name, :website_url, :person_id);
 
 --
--- UPDATES for 1 table
+-- UPDATES for 2 tables
 --
 
 -- UPDATE on people.html
@@ -162,10 +162,16 @@ UPDATE people SET
   is_admin = :is_admin
 WHERE people.person_id = :person_id;
 
---
--- DELETES for 2 tables
--- 
+-- UPDATE on products.html
+UPDATE products SET
+  name = :name,
+  description = :description
+  unit = :unit
+WHERE products.product_id = :product_id;
 
+--
+-- DELETES for 3 tables
+-- 
 -- DELETE on people.html
 DELETE FROM people
 WHERE person_id = :person_id;
@@ -173,3 +179,7 @@ WHERE person_id = :person_id;
 -- DELETE on stocked_products.html
 DELETE FROM stocked_products
 WHERE stocked_product_id = :stocked_product_id;
+
+-- DELETE on products
+DELETE FROM products
+WHERE product_id = :product_id;
