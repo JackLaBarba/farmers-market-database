@@ -79,14 +79,14 @@ app.put('/api/people/:person_id', async (req, res) => {
 //CRUD for vendors table
 app.get('/api/vendors', async (req, res) => {
     const query = `
-    SELECT
+    SELECT 
       vendors.vendor_id,
       vendors.business_name,
       vendors.website_url,
       people.full_name
     FROM vendors
     LEFT JOIN people
-    ON vendors.people_id = people.person_id
+    ON vendors.person_id = people.person_id
     ORDER BY vendors.vendor_id ASC;
     `;
     const result = await mysqlPool.query(query);
@@ -161,7 +161,7 @@ app.get('/api/stocked_products', async (req, res) => {
     const query = `
     SELECT
       stocked_products.stocked_product_id,
-      vendors.name,
+      vendors.business_name,
       products.name,
       stocked_products.unit_price_cent,
       products.unit
@@ -217,8 +217,8 @@ app.get('/api/events', async (req, res) => {
       events.event_id,
       events.name,
       events.starts_at,
-      events.ends_at
-      locations.name
+      events.ends_at,
+      locations.street_address
     FROM events
     LEFT JOIN locations
     ON events.location_id = locations.location_id
@@ -240,6 +240,33 @@ app.post('/api/events', async (req, res) => {
 });
 
 //CRUD for vendors_at_events table
+app.get('/api/vendors_at_events', async (req, res) => {
+    const query = `
+    SELECT
+      vendors_at_events.vendor_at_event_id,
+      vendors.business_name,
+      events.name
+    FROM vendors_at_events
+    LEFT JOIN vendors
+    ON vendors_at_events.vendor_id =  vendors.vendor_id
+    LEFT JOIN events
+    ON vendors_at_events.event_id = events.event_id
+    GROUP BY vendors_at_events.vendor_at_event_id ASC;
+    `;
+    const result = await mysqlPool.query(query);
+    res.send(JSON.stringify(result[0]));
+});
+
+app.post('/api/vendors_at_events', async (req, res) => {
+    const query = `
+    INSERT INTO events (vendor_id, event_id) 
+    VALUES
+    (?, ?);
+    `;
+    const { vendor_id, event_id} = req.body;
+    const result = await mysqlPool.query(query, [vendor_id, event_id]);
+    res.send(JSON.stringify(result[0]));
+});
 
 
 app.listen(app_port, () => {
