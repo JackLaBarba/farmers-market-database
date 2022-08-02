@@ -2,13 +2,15 @@ const express = require('express');
 const env = require('env-var');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const { createMysqlPool } = require('./database');
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static('public'));
+const reactAppPath = path.join(__dirname, 'public/');
+app.use(express.static(reactAppPath));
 
 // Extract configuration from environment variables
 // and assert that the required configuration is present.
@@ -268,6 +270,14 @@ app.post('/api/vendors_at_events', async (req, res) => {
     res.send(JSON.stringify(result[0]));
 });
 
+
+// This route handler serves the react app for all paths that aren't API paths.
+// This allows users to link to a specific page of the react app or reload
+// their browser on a non-root page without seeing a 404 error.
+// This route handler needs to be last.
+app.get('(/*)?', async (req, res, next) => {
+    res.sendFile(path.join(reactAppPath, 'index.html'));
+});
 
 app.listen(app_port, () => {
     console.log(`App listening on port ${app_port}`);
