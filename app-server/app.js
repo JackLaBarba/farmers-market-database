@@ -239,6 +239,19 @@ app.post('/api/stocked_products', async (req, res, next) => {
     }
 });
 
+app.delete('/api/stocked_products/:stocked_product_id', async (req, res, next) => {
+    const query = `
+    DELETE FROM stocked_products
+    WHERE stocked_products.stocked_product_id = ?;
+    `;
+    try {
+        const result = await mysqlPool.query(query, req.params.stocked_product_id);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
+});
+
 //CRUD for locations table
 app.get('/api/locations', async (req, res, next) => {
     const query = `
@@ -349,7 +362,9 @@ app.post('/api/vendors_at_events', async (req, res) => {
 // their browser on a non-root page without seeing a 404 error.
 // This route handler needs to be last.
 app.get('(/*)?', async (req, res, next) => {
-    res.sendFile(path.join(reactAppPath, 'index.html'));
+    // res.sendFile(path.join(reactAppPath, 'index.html'));
+    res.sendFile(path.join(reactAppPath));
+
 });
 
 app.listen(app_port, () => {

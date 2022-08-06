@@ -22,6 +22,16 @@ async function createStockedProduct(attributes) {
   await readStock(); // reload Stocked Products after we've saved the new one.
 }
 
+async function deleteStock(stocked_product_id) {
+  const url = `${config.backend_url}/stocked_products/${stocked_product_id}`;
+  await fetch(url,
+    {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+    });
+  await readStock(); // reload stocked products after we've deleted this one.
+}
+
 // Load Stocked Products from the server when the component renders.
 useEffect(() => {
   readStock();
@@ -45,6 +55,10 @@ return <div><h2>Stocked Products Details</h2>
                 <td>{stock.name}</td>
                 <td>{stock.unit}</td>
                 <td>$ {stock.unit_price_cent/100}</td>
+                <button className="delete" title="Delete" data-toggle="tooltip"
+                onClick={() => deleteStock(stock.stocked_product_id)}>
+                <i className="material-icons">&#xE872;</i>
+              </button>
               </tr>
             )}
           </tbody>
