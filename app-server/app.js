@@ -275,6 +275,12 @@ app.get('/api/events', async (req, res, next) => {
     if (req.query.filterName) {
         whereClause += `AND events.name LIKE '%${req.query.filterName}%'`
     }
+    if (req.query.filterStartsAfter) {
+        whereClause += `AND events.starts_at > '${req.query.filterStartsAfter}'`
+    }
+    if (req.query.filterEndsBefore) {
+        whereClause += `AND events.ends_at < '${req.query.filterEndsBefore}'`
+    }
 
     const query = `
     SELECT

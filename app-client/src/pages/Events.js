@@ -6,6 +6,8 @@ export default function Events() {
   const [events, setEvents] = useState([]);
   const [queryString, setQueryString] = useState("");
   const [filterName, setFilterName] = useState("");
+  const [filterStartsAfter, setFilterStartsAfter] = useState("");
+  const [filterEndsBefore, setFilterEndsBefore] = useState("");
 
   async function readEvents() {
     const url = `${config.backend_url}/events?${queryString}`;
@@ -36,22 +38,38 @@ export default function Events() {
     if (filterName !== "") {
       params["filterName"] = filterName
     }
+    if (filterStartsAfter !== "") {
+      params["filterStartsAfter"] = filterStartsAfter
+    }
+    if (filterEndsBefore !== "") {
+      params["filterEndsBefore"] = filterEndsBefore
+    }
     setQueryString(new URLSearchParams(params));
   }
 
   async function onClearFilter(e) {
     e.preventDefault();
     setFilterName("");
+    setFilterStartsAfter("");
+    setFilterEndsBefore("");
     setQueryString("");
   }
 
   return <div><h2>Events Details</h2>
-    <form class="event-filter-form">
+    <form className="event-filter-form">
       <legend><strong>Filter</strong></legend>
       <fieldset className="fields">
         <div>
           <label>Name </label>
           <input type="text" name="name" value={filterName} onChange={e => setFilterName(e.target.value)}></input>
+        </div>
+        <div>
+            <label> Starts after </label>
+            <input type="datetime-local" name="starts_after" value={filterStartsAfter} onChange={e => setFilterStartsAfter(e.target.value)}></input>
+        </div>
+        <div>
+            <label> Ends before </label>
+            <input type="datetime-local" name="ends_before" value={filterEndsBefore} onChange={e => setFilterEndsBefore(e.target.value)}></input>
         </div>
       </fieldset>
       <button className="btn-primary" onClick={onFilter}>Filter</button>
