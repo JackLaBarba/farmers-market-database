@@ -44,7 +44,7 @@ return <div><h2>Stocked Products Details</h2>
                 <td>{stock.business_name}</td>
                 <td>{stock.name}</td>
                 <td>{stock.unit}</td>
-                <td>$ {stock.unit_price_cent/100}</td>
+                <td>$ {(stock.unit_price_cent/100).toFixed(2)}</td>
               </tr>
             )}
           </tbody>
