@@ -11,5 +11,5 @@ function createMysqlPool(host, username, password, database) {
     });
 }
 
-// Export it for use in our applicaton
+// Export it for use in our application
 module.exports.createMysqlPool = createMysqlPool;
