@@ -26,7 +26,7 @@ console.log("connecting to db");
 const mysqlPool = createMysqlPool(db_host, db_user, db_password, db_name);
 
 //CRUD for people table
-app.get('/api/people', async (req, res) => {
+app.get('/api/people', async (req, res, next) => {
     const query = `
     SELECT
       people.person_id,
@@ -37,32 +37,44 @@ app.get('/api/people', async (req, res) => {
     FROM people
     ORDER BY people.person_id ASC;
     `;
-    const result = await mysqlPool.query(query);
-    res.send(JSON.stringify(result[0]));
+    try {
+        const result = await mysqlPool.query(query);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
-app.post('/api/people', async (req, res) => {
+app.post('/api/people', async (req, res, next) => {
     const query = `
     INSERT INTO people 
     (full_name, email, phone_number, is_admin) 
     VALUES 
     (?, ?, ?, ?);
     `;
-    const { full_name, email, phone_number, is_admin} = req.body;
-    const result = await mysqlPool.query(query, [full_name, email, phone_number, is_admin]);
-    res.send(JSON.stringify(result[0]));
+    const { full_name, email, phone_number, is_admin } = req.body;
+    try {
+        const result = await mysqlPool.query(query, [full_name, email, phone_number, is_admin]);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
-app.delete('/api/people/:person_id', async (req, res) => {
+app.delete('/api/people/:person_id', async (req, res, next) => {
     const query = `
     DELETE FROM people
     WHERE people.person_id = ?;
     `;
-    const result = await mysqlPool.query(query, req.params.person_id);
-    res.send(JSON.stringify(result[0]));
+    try {
+        const result = await mysqlPool.query(query, req.params.person_id);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
-app.put('/api/people/:person_id', async (req, res) => {
+app.put('/api/people/:person_id', async (req, res, next) => {
     const query = `
     UPDATE people SET
     full_name = ?,
@@ -71,15 +83,19 @@ app.put('/api/people/:person_id', async (req, res) => {
     is_admin = ?
     WHERE people.person_id = ?;
     `;
-    const { full_name, email, phone_number, is_admin} = req.body;
-    const result = await mysqlPool.query(query,
-        [full_name, email, phone_number,is_admin, req.params.person_id]
-    );
-    res.send(JSON.stringify(result[0]));
+    const { full_name, email, phone_number, is_admin } = req.body;
+    try {
+        const result = await mysqlPool.query(query,
+            [full_name, email, phone_number, is_admin, req.params.person_id]
+        );
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
 //CRUD for vendors table
-app.get('/api/vendors', async (req, res) => {
+app.get('/api/vendors', async (req, res, next) => {
     const query = `
     SELECT 
       vendors.vendor_id,
@@ -91,24 +107,32 @@ app.get('/api/vendors', async (req, res) => {
     ON vendors.person_id = people.person_id
     ORDER BY vendors.vendor_id ASC;
     `;
-    const result = await mysqlPool.query(query);
-    res.send(JSON.stringify(result[0]));
+    try {
+        const result = await mysqlPool.query(query);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
-app.post('/api/vendors', async (req, res) => {
+app.post('/api/vendors', async (req, res, next) => {
     const query = `
     INSERT INTO vendors 
     (business_name, website_url, person_id) 
     VALUES 
     (?, ?, ?);
     `;
-    const { business_name, website_url, person_id} = req.body;
-    const result = await mysqlPool.query(query, [business_name, website_url, person_id]);
-    res.send(JSON.stringify(result[0]));
+    const { business_name, website_url, person_id } = req.body;
+    try {
+        const result = await mysqlPool.query(query, [business_name, website_url, person_id]);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
 //CRUD for products table
-app.get('/api/products', async (req, res) => {
+app.get('/api/products', async (req, res, next) => {
     const query = `
     SELECT
       products.product_id,
@@ -118,29 +142,41 @@ app.get('/api/products', async (req, res) => {
     FROM products
     ORDER BY products.product_id ASC;
     `;
-    const result = await mysqlPool.query(query);
-    res.send(JSON.stringify(result[0]));
+    try {
+        const result = await mysqlPool.query(query);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
-app.post('/api/products', async (req, res) => {
+app.post('/api/products', async (req, res, next) => {
     const query = `
     INSERT INTO products 
     (name, description, unit) 
     VALUES 
     (?, ?, ?);
     `;
-    const { name, description, unit} = req.body;
-    const result = await mysqlPool.query(query, [name, description, unit]);
-    res.send(JSON.stringify(result[0]));
+    const { name, description, unit } = req.body;
+    try {
+        const result = await mysqlPool.query(query, [name, description, unit]);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
-app.delete('/api/products/:product_id', async (req, res) => {
+app.delete('/api/products/:product_id', async (req, res, next) => {
     const query = `
     DELETE FROM products
     WHERE products.product_id = ?;
     `;
-    const result = await mysqlPool.query(query, req.params.product_id);
-    res.send(JSON.stringify(result[0]));
+    try {
+        const result = await mysqlPool.query(query, req.params.product_id);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
 app.put('/api/products/:product_id', async (req, res) => {
@@ -151,15 +187,19 @@ app.put('/api/products/:product_id', async (req, res) => {
     unit = ?
     WHERE products.product_id = ?;
     `;
-    const { name, description, unit} = req.body;
-    const result = await mysqlPool.query(query,
-        [name, description, unit, req.params.product_id]
-    );
-    res.send(JSON.stringify(result[0]));
+    const { name, description, unit } = req.body;
+    try {
+        const result = await mysqlPool.query(query,
+            [name, description, unit, req.params.product_id]
+        );
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
 //CRUD for stocked_products table
-app.get('/api/stocked_products', async (req, res) => {
+app.get('/api/stocked_products', async (req, res, next) => {
     const query = `
     SELECT
       stocked_products.stocked_product_id,
@@ -174,46 +214,62 @@ app.get('/api/stocked_products', async (req, res) => {
     ON stocked_products.product_id = products.product_id
     ORDER BY stocked_products.stocked_product_id ASC;
     `;
-    const result = await mysqlPool.query(query);
-    res.send(JSON.stringify(result[0]));
+    try {
+        const result = await mysqlPool.query(query);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
-app.post('/api/stocked_products', async (req, res) => {
+app.post('/api/stocked_products', async (req, res, next) => {
     const query = `
     INSERT INTO stocked_products 
     (vendor_id, product_id, unit_price_cent) 
     VALUES 
     (?, ?, ?);
     `;
-    const { vendor_id, product_id, unit_price_cent} = req.body;
-    const result = await mysqlPool.query(query, [vendor_id, product_id, unit_price_cent]);
-    res.send(JSON.stringify(result[0]));
+    const { vendor_id, product_id, unit_price_cent } = req.body;
+    try {
+        const result = await mysqlPool.query(query, [vendor_id, product_id, unit_price_cent]);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
 //CRUD for locations table
-app.get('/api/locations', async (req, res) => {
+app.get('/api/locations', async (req, re, next) => {
     const query = `
     SELECT * FROM locations
     ORDER BY locations.location_id ASC;
     `;
-    const result = await mysqlPool.query(query);
-    res.send(JSON.stringify(result[0]));
+    try {
+        const result = await mysqlPool.query(query);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
-app.post('/api/locations', async (req, res) => {
+app.post('/api/locations', async (req, res, next) => {
     const query = `
     INSERT INTO locations 
     (name, street_address, has_parking, contact_information) 
     VALUES 
     (?, ?, ?, ?);
     `;
-    const { name, street_address, has_parking, contact_information} = req.body;
-    const result = await mysqlPool.query(query, [name, street_address, has_parking, contact_information]);
-    res.send(JSON.stringify(result[0]));
+    const { name, street_address, has_parking, contact_information } = req.body;
+    try {
+        const result = await mysqlPool.query(query, [name, street_address, has_parking, contact_information]);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
 //CRUD for events table
-app.get('/api/events', async (req, res) => {
+app.get('/api/events', async (req, res, next) => {
     const query = `
     SELECT
       events.event_id,
@@ -226,23 +282,31 @@ app.get('/api/events', async (req, res) => {
     ON events.location_id = locations.location_id
     ORDER BY events.event_id ASC;
     `;
-    const result = await mysqlPool.query(query);
-    res.send(JSON.stringify(result[0]));
+    try {
+        const result = await mysqlPool.query(query);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
-app.post('/api/events', async (req, res) => {
+app.post('/api/events', async (req, res, next) => {
     const query = `
     INSERT INTO events (name, starts_at, ends_at, location_id) 
     VALUES
     (?, ?, ?, ?);
     `;
-    const { name, starts_at, ends_at, location_id} = req.body;
-    const result = await mysqlPool.query(query, [name, starts_at, ends_at, location_id]);
-    res.send(JSON.stringify(result[0]));
+    const { name, starts_at, ends_at, location_id } = req.body;
+    try {
+        const result = await mysqlPool.query(query, [name, starts_at, ends_at, location_id]);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
 //CRUD for vendors_at_events table
-app.get('/api/vendors_at_events', async (req, res) => {
+app.get('/api/vendors_at_events', async (req, res, next) => {
     const query = `
     SELECT
       vendors_at_events.vendor_at_event_id,
@@ -255,8 +319,12 @@ app.get('/api/vendors_at_events', async (req, res) => {
     ON vendors_at_events.event_id = events.event_id
     GROUP BY vendors_at_events.vendor_at_event_id;
     `;
-    const result = await mysqlPool.query(query);
-    res.send(JSON.stringify(result[0]));
+    try {
+        const result = await mysqlPool.query(query);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
 app.post('/api/vendors_at_events', async (req, res) => {
@@ -265,9 +333,13 @@ app.post('/api/vendors_at_events', async (req, res) => {
     VALUES
     (?, ?);
     `;
-    const { vendor_id, event_id} = req.body;
-    const result = await mysqlPool.query(query, [vendor_id, event_id]);
-    res.send(JSON.stringify(result[0]));
+    const { vendor_id, event_id } = req.body;
+    try {
+        const result = await mysqlPool.query(query, [vendor_id, event_id]);
+        res.send(JSON.stringify(result[0]));
+    } catch (e) {
+        next(e);
+    }
 });
 
 
