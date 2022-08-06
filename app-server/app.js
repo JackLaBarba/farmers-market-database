@@ -284,6 +284,17 @@ app.post('/api/locations', async (req, res, next) => {
 
 //CRUD for events table
 app.get('/api/events', async (req, res, next) => {
+    let whereClause = "WHERE 1=1 ";
+    if (req.query.filterName) {
+        whereClause += `AND events.name LIKE '%${req.query.filterName}%'`
+    }
+    if (req.query.filterStartsAfter) {
+        whereClause += `AND events.starts_at > '${req.query.filterStartsAfter}'`
+    }
+    if (req.query.filterEndsBefore) {
+        whereClause += `AND events.ends_at < '${req.query.filterEndsBefore}'`
+    }
+
     const query = `
     SELECT
       events.event_id,
@@ -294,6 +305,7 @@ app.get('/api/events', async (req, res, next) => {
     FROM events
     LEFT JOIN locations
     ON events.location_id = locations.location_id
+    ${whereClause}
     ORDER BY events.event_id ASC;
     `;
     try {

@@ -58,7 +58,8 @@ return <div><h2>Stocked Products Details</h2>
                 <button className="delete" title="Delete" data-toggle="tooltip"
                 onClick={() => deleteStock(stock.stocked_product_id)}>
                 <i className="material-icons">&#xE872;</i>
-              </button>
+                </button>
+                {/* <td>$ {(stock.unit_price_cent/100).toFixed(2)}</td> */}
               </tr>
             )}
           </tbody>
