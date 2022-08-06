@@ -90,8 +90,8 @@ export default function Events() {
           <tr key={index}>
             <td>{event.event_id}</td>
             <td>{event.name}</td>
-            <td>{event.starts_at}</td>
-            <td>{event.ends_at}</td>
+            <td>{(new Date(event.starts_at)).toLocaleString()}</td>
+            <td>{(new Date(event.ends_at)).toLocaleString()}</td>
             <td>{event.street_address}</td>
           </tr>
         )}
