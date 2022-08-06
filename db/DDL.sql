@@ -1,25 +1,15 @@
 CREATE TABLE `products` (
 	`product_id` int NOT NULL AUTO_INCREMENT,
-	`name` varchar(1024) 
-		CONSTRAINT `products_name_present` CHECK (CHAR_LENGTH(`name`) >= 1) 
-		NOT NULL,
-	`description` TEXT(10000) 
-		CONSTRAINT `products_description_present` CHECK (CHAR_LENGTH(`description`) >= 1) 
-		NOT NULL,
-	`unit` varchar(1024) 
-		CONSTRAINT `products_unit_present` CHECK (CHAR_LENGTH(`unit`) >= 1)
-		NOT NULL,
+	`name` varchar(1024) NOT NULL,
+	`description` TEXT(10000) NOT NULL,
+	`unit` varchar(1024) NOT NULL,
 	PRIMARY KEY (`product_id`)
 );
 
 CREATE TABLE `vendors` (
 	`vendor_id` int NOT NULL AUTO_INCREMENT,
-	`business_name` varchar(1024) 
-		CONSTRAINT `vendors_business_name_present` CHECK (CHAR_LENGTH(`business_name`) >= 1)
-		NOT NULL,
-	`website_url` varchar(1024)
-		CONSTRAINT `products_website_url_present` CHECK (CHAR_LENGTH(`website_url`) >= 1)
-		NOT NULL,
+	`business_name` varchar(1024) NOT NULL,
+	`website_url` varchar(1024) NOT NULL,
 	`person_id` int,
 	PRIMARY KEY (`vendor_id`)
 );
@@ -33,24 +23,16 @@ CREATE TABLE `vendors_at_events` (
 
 CREATE TABLE `locations` (
 	`location_id` int NOT NULL AUTO_INCREMENT,
-	`name` varchar(1024)
-		CONSTRAINT `locations_name_present` CHECK (CHAR_LENGTH(`name`) >= 1)
-		NOT NULL,
-	`street_address` varchar(1024)
-		CONSTRAINT `locations_street_address_present` CHECK (CHAR_LENGTH(`street_address`) >= 1)
-		NOT NULL,	
+	`name` varchar(1024) NOT NULL,
+	`street_address` varchar(1024) NOT NULL,	
 	`has_parking` tinyint NOT NULL,
-	`contact_information` varchar(1024)
-		CONSTRAINT `locations_contact_information_present` CHECK (CHAR_LENGTH(`contact_information`) >= 1)
-		NOT NULL,	
+	`contact_information` varchar(1024) NOT NULL,	
 	PRIMARY KEY (`location_id`)
 );
 
 CREATE TABLE `events` (
 	`event_id` int NOT NULL AUTO_INCREMENT,
-	`name` varchar(1024)
-		CONSTRAINT `events_name_present` CHECK (CHAR_LENGTH(`name`) >= 1)
-		NOT NULL,	
+	`name` varchar(1024) NOT NULL,	
 	`starts_at` DATETIME NOT NULL,
 	`ends_at` DATETIME NOT NULL,
 	`location_id` int NOT NULL,
@@ -59,15 +41,9 @@ CREATE TABLE `events` (
 
 CREATE TABLE `people` (
 	`person_id` int NOT NULL AUTO_INCREMENT,
-	`full_name` varchar(1024)
-		CONSTRAINT `people_full_name_present` CHECK (CHAR_LENGTH(`full_name`) >= 1)
-		NOT NULL,	
-	`email` varchar(1024)
-		CONSTRAINT `people_email_present` CHECK (CHAR_LENGTH(`email`) >= 1)
-		NOT NULL,
-	`phone_number` varchar(1024)
-		CONSTRAINT `people_phone_number_present` CHECK (CHAR_LENGTH(`phone_number`) >= 1)
-		NOT NULL,
+	`full_name` varchar(1024) NOT NULL,	
+	`email` varchar(1024) NOT NULL,
+	`phone_number` varchar(1024) NOT NULL,
 	`is_admin` tinyint NOT NULL,
 	PRIMARY KEY (`person_id`)
 );
