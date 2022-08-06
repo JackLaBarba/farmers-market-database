@@ -45,7 +45,7 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="people" element={<People />}>
                 <Route path="" element={<Link to='/people/new'><button>Add a Person</button></Link>} />
-                <Route path="new_person" element={<PersonFormNew />} />
+                <Route path="new" element={<PersonFormNew />} />
                 <Route path=":person_id/update" element={<PersonFormUpdate />} />
               </Route>
               <Route path="vendors" element={<Vendors />} ></Route>

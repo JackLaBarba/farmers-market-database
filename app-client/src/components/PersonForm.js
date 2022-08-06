@@ -4,7 +4,7 @@ export default function PersonForm({ submitAction, cancelAction, person, legend 
   const [full_name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone_number, setPhone] = useState("");
-  const [is_admin, setAdmin] = useState("");
+  const [is_admin, setAdmin] = useState(0);
 
   useEffect(() => {
     if (person) {
@@ -44,7 +44,7 @@ export default function PersonForm({ submitAction, cancelAction, person, legend 
           </div>
           <div>
             <label> Is Admin? </label>
-            <input type="number" name="admin" value={is_admin} onChange={e => setAdmin(e.target.value)} />
+            <input type="checkbox" name="admin" checked={is_admin === 1} onChange={e => setAdmin((is_admin+1)%2)} />
           </div>
         </fieldset>
         <button className="btn-primary" onClick={onSubmit}>Submit</button>

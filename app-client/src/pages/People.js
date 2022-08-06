@@ -11,7 +11,7 @@ export default function People() {
     setPeople(await response.json());
   }
 
-  async function createPeople(attributes) {
+  async function createPerson(attributes) {
     const url = `${config.backend_url}/people`;
     await fetch(url,
       {
@@ -22,7 +22,7 @@ export default function People() {
     await readPeople(); // reload people after we've saved the new one.
   }
 
-  async function updatePeople(person_id, attributes) {
+  async function updatePerson(person_id, attributes) {
     const url = `${config.backend_url}/people/${person_id}`;
     await fetch(url,
       {
@@ -33,7 +33,7 @@ export default function People() {
     await readPeople(); // reload people after we've updated this new one.
   }
 
-  async function deletePeople(person_id) {
+  async function deletePerson(person_id) {
     const url = `${config.backend_url}/people/${person_id}`;
     await fetch(url,
       {
@@ -66,7 +66,7 @@ export default function People() {
             <td>{person.full_name}</td>
             <td>{person.email}</td>
             <td>{person.phone_number}</td>
-            <td>{person.is_admin}</td>
+            <td>{person.is_admin ? "Yes" : "No"}</td>
             <td>
               <button className="edit" title="Edit" data-toggle="tooltip" >
                 <Link to={`/people/${person.person_id}/update`}>
@@ -74,7 +74,7 @@ export default function People() {
                 </Link>
               </button>
               <button className="delete" title="Delete" data-toggle="tooltip"
-                onClick={() => deletePeople(person.person_id)}>
+                onClick={() => deletePerson(person.person_id)}>
                 <i className="material-icons">&#xE872;</i>
               </button>
             </td>
@@ -82,6 +82,6 @@ export default function People() {
         )}
       </tbody>
     </table>
-    <Outlet context={{ createPeople, updatePeople, people }} />
+    <Outlet context={{ createPerson, updatePerson, people }} />
   </div>;
 }
