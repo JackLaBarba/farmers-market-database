@@ -11,7 +11,7 @@ async function readStock() {
   setStocks(await response.json());
 }
 
-async function createStock(attributes) {
+async function createStockedProduct(attributes) {
   const url = `${config.backend_url}/stocked_products`;
   await fetch(url,
     {
@@ -49,6 +49,6 @@ return <div><h2>Stocked Products Details</h2>
             )}
           </tbody>
         </table>
-        <Outlet context={{ createStock, stocked_products}} />
+        <Outlet context={{ createStockedProduct, stocked_products}} />
     </div>;
 }
