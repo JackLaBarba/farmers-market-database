@@ -4,12 +4,12 @@ var mysql = require('mysql2/promise');
 function createMysqlPool(host, username, password, database) {
     return mysql.createPool({
         connectionLimit: 10,
-        host: "classmysql.engr.oregonstate.edu",
-        user: "cs340_kopkaewp",
-        password: "3988",
-        database: "cs340_kopkaewp"
+        host,
+        user: username,
+        password: password,
+        database: database,
     });
 }
 
-// Export it for use in our applicaton
+// Export it for use in our application
 module.exports.createMysqlPool = createMysqlPool;
