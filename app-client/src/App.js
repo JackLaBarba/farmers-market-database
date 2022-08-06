@@ -23,6 +23,7 @@ import PersonFormUpdate from "./components/PersonFormUpdate";
 import VendorFormNew from "./components/VendorFormNew";
 import StockedProductFormNew from "./components/StockedProductFormNew";
 import LocationFormNew from "./components/LocationFormNew";
+import EventFormNew from "./components/EventFormNew";
 
 export default function App() {
   return (
@@ -73,8 +74,12 @@ export default function App() {
                       <Route path="" element={<Link to='/locations/new'><button>Add a Location</button></Link>} />
                       <Route path="new" element={<LocationFormNew />} />
                     </Route>
-                    
-                    <Route path="events" element={<Events />} />
+
+                    <Route path="events" element={<Events />} >
+                      <Route path="" element={<Link to='/events/new'><button>Add an Event</button></Link>} />
+                      <Route path="new" element={<EventFormNew />} />
+                    </Route>
+
                     <Route path="vendors_at_events" element={<VendorsAtEvents />} />
                   </Routes>
                 </Row>
