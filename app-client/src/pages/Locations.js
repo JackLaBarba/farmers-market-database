@@ -45,7 +45,7 @@ export default function Locations() {
                <td>{location.location_id}</td>
                <td>{location.name}</td>
                <td>{location.street_address}</td>
-               <td>{location.has_parking}</td>
+               <td>{location.has_parking ? "Yes" : "No"}</td>
                <td>{location.contact_information}</td>
              </tr>
            )}

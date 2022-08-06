@@ -240,7 +240,7 @@ app.post('/api/stocked_products', async (req, res, next) => {
 });
 
 //CRUD for locations table
-app.get('/api/locations', async (req, re, next) => {
+app.get('/api/locations', async (req, res, next) => {
     const query = `
     SELECT * FROM locations
     ORDER BY locations.location_id ASC;
