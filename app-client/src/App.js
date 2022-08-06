@@ -20,6 +20,7 @@ import ProductFormNew from "./components/ProductFormNew";
 import ProductFormUpdate from "./components/ProductFormUpdate";
 import PersonFormNew from "./components/PersonFormNew";
 import PersonFormUpdate from "./components/PersonFormUpdate";
+import VendorFormNew from "./components/VendorFormNew";
 
 export default function App() {
   return (
@@ -48,7 +49,10 @@ export default function App() {
                 <Route path="new" element={<PersonFormNew />} />
                 <Route path=":person_id/update" element={<PersonFormUpdate />} />
               </Route>
-              <Route path="vendors" element={<Vendors />} ></Route>
+              <Route path="vendors" element={<Vendors />} >
+                <Route path="" element={<Link to='/vendors/new'><button>Add a Vendor</button></Link>} />
+                <Route path="new" element={<VendorFormNew />} />                   
+              </Route>
               <Route path="products" element={<Products />} >
                 <Route path="" element={<Link to='/products/new'><button>Add a Product</button></Link>} />
                 <Route path="new" element={<ProductFormNew />} />

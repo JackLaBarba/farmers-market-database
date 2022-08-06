@@ -122,7 +122,8 @@ app.post('/api/vendors', async (req, res, next) => {
     VALUES 
     (?, ?, ?);
     `;
-    const { business_name, website_url, person_id } = req.body;
+    let { business_name, website_url, person_id } = req.body;
+    person_id = person_id === "Null" ? null : person_id
     try {
         const result = await mysqlPool.query(query, [business_name, website_url, person_id]);
         res.send(JSON.stringify(result[0]));
