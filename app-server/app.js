@@ -355,6 +355,11 @@ app.post('/api/vendors_at_events', async (req, res) => {
     }
 });
 
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).send(err.message)
+});
+
 
 // This route handler serves the react app for all paths that aren't API paths.
 // This allows users to link to a specific page of the react app or reload

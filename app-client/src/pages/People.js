@@ -13,33 +13,42 @@ export default function People() {
 
   async function createPerson(attributes) {
     const url = `${config.backend_url}/people`;
-    await fetch(url,
+    const resp = await fetch(url,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(attributes)
       });
+    if (resp.status !== 200) {
+      alert(await resp.text())
+    }
     await readPeople(); // reload people after we've saved the new one.
   }
 
   async function updatePerson(person_id, attributes) {
     const url = `${config.backend_url}/people/${person_id}`;
-    await fetch(url,
+    const resp = await fetch(url,
       {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(attributes)
       });
+    if (resp.status !== 200) {
+      alert(await resp.text())
+    }
     await readPeople(); // reload people after we've updated this new one.
   }
 
   async function deletePerson(person_id) {
     const url = `${config.backend_url}/people/${person_id}`;
-    await fetch(url,
+    const resp = await fetch(url,
       {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
       });
+    if (resp.status !== 200) {
+      alert(await resp.text())
+    }
     await readPeople(); // reload people after we've deleted this one.
   }
 
