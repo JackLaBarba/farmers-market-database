@@ -4,10 +4,10 @@ var mysql = require('mysql2/promise');
 function createMysqlPool(host, username, password, database) {
     return mysql.createPool({
         connectionLimit: 10,
-        host: host,
-        user: username,
-        password: password,
-        database: database
+        host: "classmysql.engr.oregonstate.edu",
+        user: "cs340_kopkaewp",
+        password: "3988",
+        database: "cs340_kopkaewp"
     });
 }
 
