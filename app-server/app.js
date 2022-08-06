@@ -330,7 +330,7 @@ app.get('/api/vendors_at_events', async (req, res, next) => {
 
 app.post('/api/vendors_at_events', async (req, res) => {
     const query = `
-    INSERT INTO events (vendor_id, event_id) 
+    INSERT INTO vendors_at_events (vendor_id, event_id) 
     VALUES
     (?, ?);
     `;

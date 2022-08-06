@@ -11,7 +11,7 @@ async function readEventVendor() {
   setEventVendors(await response.json());
 }
 
-async function createEventVendor(attributes) {
+async function createVendorAtEvent(attributes) {
   const url = `${config.backend_url}/vendors_at_events`;
   await fetch(url,
     {
@@ -45,6 +45,6 @@ useEffect(() => {
             )}
           </tbody>
         </table>
-        <Outlet context={{ createEventVendor, vendors_at_events}} />
+        <Outlet context={{ createVendorAtEvent, vendors_at_events}} />
     </div>;
   }
